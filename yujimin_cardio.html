@@ -169,6 +169,21 @@
             font-weight: bold;
         }
 
+        .specialty-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .specialty-tag {
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
         .back-button {
             display: inline-block;
             padding: 12px 24px;
@@ -237,15 +252,18 @@
                                 <span class="info-label">직급</span>
                                 <span class="info-value">3년차 레지던트</span>
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">전문 분야</span>
-                                <span class="info-value">심장 이식</span>
-                            </div>
+
                         </div>
                     </div>
 
                     <div class="detail-section">
-                        <h2>학력 및 경력</h2>
+                        <h2>전문 분야</h2>
+                        <div class="specialty-tags">
+                            <span class="specialty-tag">심장 이식</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-section">                        <h2>학력 및 경력</h2>
                         <ul class="career-list">
                             <li>한국대학교 의학과 학사</li>
                             <li>명우대학교 의과대학 신경외과 인턴</li>
