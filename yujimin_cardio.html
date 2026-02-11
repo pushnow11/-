@@ -214,9 +214,11 @@
         .quote-item {
             margin-bottom: 32px;
             padding: 24px;
+            padding-left: 48px;
             background: linear-gradient(135deg, #f0f9ff 0%, #fafbfc 100%);
             border-radius: 12px;
             border-left: 4px solid var(--primary);
+            position: relative;
         }
 
         .quote-item:last-child {
@@ -228,7 +230,6 @@
             line-height: 1.8;
             color: var(--text-primary);
             font-style: italic;
-            position: relative;
         }
 
         .quote-text::before {
@@ -237,8 +238,9 @@
             color: var(--primary);
             opacity: 0.3;
             position: absolute;
-            left: -16px;
-            top: -8px;
+            left: 12px;
+            top: 8px;
+            line-height: 1;
         }
 
         /* 인물 소개 섹션 */
@@ -392,24 +394,36 @@
                 </div>
 
                 <div class="nav-buttons">
-                    <button class="nav-button" onclick="nextSlide()">명대사 & 인물 소개 →</button>
+                    <button class="nav-button" onclick="nextSlide()">인물 소개 & 명대사 →</button>
                     <button class="nav-button" onclick="window.close()">창 닫기</button>
                 </div>
             </div>
         </div>
 
-        <!-- 두 번째 슬라이드: 명대사 & 인물 소개 -->
+        <!-- 두 번째 슬라이드: 인물 소개 & 명대사 (순서 변경) -->
         <div class="slide">
             <div class="container">
                 <div class="profile-card">
                     <div class="profile-header">
                         <div class="work-badge">코드 그레이</div>
                         <h1>유지민</h1>
-                        <p class="subtitle">명대사 & 인물 소개</p>
+                        <p class="subtitle">인물 소개 & 명대사</p>
                     </div>
 
                     <div style="padding: 40px;">
-                        <div class="detail-section" style="margin-bottom: 32px;">
+                        <!-- 인물 소개가 먼저 -->
+                        <div class="detail-section" style="margin-bottom: 16px;">
+                            <h2>인물 소개</h2>
+                        </div>
+                        
+                        <div class="intro-section">
+                            <div class="intro-placeholder">
+                                인물 소개는 추후 업데이트 예정입니다.
+                            </div>
+                        </div>
+
+                        <!-- 명대사가 나중에 -->
+                        <div class="detail-section" style="margin-bottom: 16px; margin-top: 32px;">
                             <h2>명대사</h2>
                         </div>
                         
@@ -422,16 +436,6 @@
                             </div>
                             <div class="quote-item">
                                 <p class="quote-text">너 살리려고 의사가 됐어. 앞으로도 그럴 거야. 그게 내가 열아홉에, 열여덟에…어쩌면 그보다 더 오래 전에, 작고 소중한 김민정을 만났을 때 정한 내 인생이거든.</p>
-                            </div>
-                        </div>
-
-                        <div class="detail-section" style="margin-bottom: 16px; margin-top: 32px;">
-                            <h2>인물 소개</h2>
-                        </div>
-                        
-                        <div class="intro-section">
-                            <div class="intro-placeholder">
-                                인물 소개는 추후 업데이트 예정입니다.
                             </div>
                         </div>
                     </div>
