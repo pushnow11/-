@@ -6,7 +6,9 @@
     <title>강슬기 - 흉부외과 4년차 치프 레지던트</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
+                :root {
+            --hospital-blue: #0f0f43;
+            --hospital-blue-light: #1e3a8a;
             --primary: #2563eb;
             --primary-light: #60a5fa;
             --secondary: #0ea5e9;
@@ -25,9 +27,9 @@
             box-sizing: border-box;
         }
 
-        body {
+                body {
             font-family: 'Noto Sans KR', -apple-system, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #fafbfc 100%);
+            background: #e5e7eb;
             color: var(--text-primary);
             padding: 40px 20px;
             min-height: 100vh;
@@ -46,24 +48,35 @@
             margin-bottom: 30px;
         }
 
-        .profile-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                                .profile-header {
+            background: linear-gradient(135deg, #0f0f43 0%, #1e3a8a 40%, #2563eb 100%);
             padding: 40px;
             text-align: center;
             color: white;
         }
 
-        .work-badge {
-            display: inline-block;
-            padding: 10px 24px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-            letter-spacing: 0.5px;
+                        .work-badge {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(55, 65, 81, 0.5);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+        }
+        
+        .work-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(55, 65, 81, 0.6);
+        }
+        
+        .work-badge.current {
+            background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #9ca3af 100%);
         }
 
         .profile-header h1 {
@@ -104,9 +117,9 @@
             border: 1px solid var(--border);
         }
 
-        .detail-section h2 {
+                .detail-section h2 {
             font-size: 1.3rem;
-            color: var(--primary);
+            color: var(--hospital-blue);
             margin-bottom: 16px;
             font-weight: 600;
             display: flex;
@@ -118,7 +131,7 @@
             content: '';
             width: 4px;
             height: 20px;
-            background: var(--primary);
+            background: var(--hospital-blue);
             border-radius: 2px;
         }
 
@@ -222,7 +235,7 @@
     <div class="container">
         <div class="profile-card">
             <div class="profile-header">
-                <div class="work-badge">코드 그레이</div>
+                <a href="https://www.postype.com/@delighted-dream/post/10089527" target="_blank" class="work-badge current">코드 그레이</a>
                 <h1>강슬기</h1>
                 <p class="subtitle">흉부외과 4년차 치프 레지던트</p>
             </div>
