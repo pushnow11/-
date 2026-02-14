@@ -120,6 +120,35 @@
             color: var(--hospital-blue);
         }
 
+        .dedication {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-top: 16px;
+            color: var(--hospital-blue);
+            opacity: 0.7;
+            letter-spacing: 0.3px;
+        }
+
+        .author-badge {
+            display: inline-block;
+            padding: 4px 16px;
+            background: linear-gradient(135deg, #b8860b, #daa520, #f4d03f);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            font-style: italic;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .author-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.5);
+            background: linear-gradient(135deg, #daa520, #f4d03f, #ffd700);
+        }
+
         .container {
             max-width: 1400px;
             margin: -40px auto 0;
@@ -491,6 +520,9 @@
                 <h1 class="hospital-name">명우대학교병원</h1>
                 <div class="hospital-name-en">MYEONGWOO UNIVERSITY HOSPITAL</div>
                 <div class="page-title">조직도 | ORGANIZATIONAL CHART</div>
+                <div class="dedication">
+                    Created for <a href="https://www.postype.com/@delighted-dream" target="_blank" class="author-badge">whynotme</a>
+                </div>
             </div>
         </div>
     </div>
