@@ -225,6 +225,15 @@
             margin-bottom: 6px;
         }
 
+        .history-item .name.clickable {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .history-item .name.clickable:hover {
+            color: var(--primary);
+        }
+
         .history-item .name {
             font-size: 1.1rem;
             font-weight: 600;
@@ -503,15 +512,15 @@
                 <div class="history-grid">
                     <div class="history-item">
                         <div class="gen">31대</div>
-                        <div class="name">강원철</div>
+                        <div class="name clickable" onclick="window.open('kang_wonchul.html', '_blank', 'width=1200,height=1200')">강원철</div>
                     </div>
                     <div class="history-item">
                         <div class="gen">32대</div>
-                        <div class="name">유기환</div>
+                        <div class="name clickable" onclick="window.open('yoo_gihwan.html', '_blank', 'width=1200,height=1200')">유기환</div>
                     </div>
                     <div class="history-item">
                         <div class="gen">33대 (현)</div>
-                        <div class="name">황인규</div>
+                        <div class="name clickable" onclick="window.open('hwang_ingyu.html', '_blank', 'width=1200,height=1200')">황인규</div>
                     </div>
                 </div>
             </div>
