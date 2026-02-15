@@ -556,68 +556,6 @@
             }
         }
 
-/* Mobile-only tweak: shrink long "I Wish You a Merry Christmas" badge so names don't collapse */
-@media (max-width: 480px) {
-  .work-badge.christmas {
-    font-size: 0.78rem;
-    padding: 4px 10px;
-    border-radius: 16px;
-    max-width: 100%;
-  }
-  /* In the '병원 외 주요 인물' section, allow name+badge to wrap nicely instead of squeezing the name */
-  .department-card.external-people .member-name {
-    display: flex !important;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .department-card.external-people .member-name .work-badge {
-    white-space: nowrap;
-  }
-}
-/* Strong mobile fix for external people section */
-@media (max-width: 480px) {
-  .department-card.external-people .member-item {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-  }
-
-  .department-card.external-people .member-name {
-    display: inline-block !important;
-    white-space: nowrap !important;
-    flex: 1 1 auto !important;
-  }
-
-  .department-card.external-people .work-badge.christmas {
-    font-size: 0.72rem !important;
-    padding: 3px 8px !important;
-    border-radius: 14px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .department-card.external-people .work-badge {
-    white-space: nowrap !important;
-  }
-}
-/* Mobile: keep badge shape consistent with other badges (square-ish radius) */
-@media (max-width: 480px) {
-  .department-card.external-people .work-badge.christmas {
-    border-radius: 4px !important;
-  }
-}
-/* Mobile: force ALL badges to use same shape as desktop */
-@media (max-width: 480px) {
-  .work-badge,
-  .work-badge.christmas,
-  .work-badge.code-gray,
-  .work-badge.merry,
-  .work-badge.ow,
-  .work-badge.ma {
-    border-radius: 4px !important;
-  }
-}
 </style>
 </head>
 <body>
