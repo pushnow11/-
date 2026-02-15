@@ -575,6 +575,32 @@
     white-space: nowrap;
   }
 }
+/* Strong mobile fix for external people section */
+@media (max-width: 480px) {
+  .department-card.external-people .member-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .department-card.external-people .member-name {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    flex: 1 1 auto !important;
+  }
+
+  .department-card.external-people .work-badge.christmas {
+    font-size: 0.72rem !important;
+    padding: 3px 8px !important;
+    border-radius: 14px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .department-card.external-people .work-badge {
+    white-space: nowrap !important;
+  }
+}
 </style>
 </head>
 <body>
