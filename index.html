@@ -556,6 +556,25 @@
             }
         }
 
+/* Mobile-only tweak: shrink long "I Wish You a Merry Christmas" badge so names don't collapse */
+@media (max-width: 480px) {
+  .work-badge.christmas {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+  /* In the '병원 외 주요 인물' section, allow name+badge to wrap nicely instead of squeezing the name */
+  .department-card.external-people .member-name {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .department-card.external-people .member-name .work-badge {
+    white-space: nowrap;
+  }
+}
 </style>
 </head>
 <body>
