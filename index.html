@@ -631,6 +631,17 @@
     line-height: 1.2 !important;
   }
 }
+
+        /* 김다육 링크 밑줄 제거 (a 태그 기본 스타일 강제 덮어쓰기) */
+        a.member-name.clickable,
+        a.member-name.clickable:link,
+        a.member-name.clickable:visited,
+        a.member-name.clickable:hover,
+        a.member-name.clickable:active {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+
 </style>
 </head>
 <body>
@@ -916,7 +927,9 @@
                     </div>
                     <div class="member-item">
                         <span class="member-position">식물</span>
-                        <span class="member-name clickable" onclick="alert('상세 페이지 준비중입니다.');">김다육<span class="work-badge whynotme">와이낫미</span></span>
+                        <span class="member-name clickable" onclick="location.href='kim_dayuk.html'">
+    김다육<span class="work-badge whynotme">와이낫미</span>
+</span>
                     </div>
 
                 </div>
