@@ -524,7 +524,22 @@
             .external-people .member-name { white-space: normal; }
         }
 
-</style>
+
+        /* Mobile responsiveness fix */
+        @media (max-width: 768px) {
+            body { overflow-x: hidden; }
+            .container { padding: 0 14px 28px; margin-top: -24px; }
+            .departments-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 12px 24px; }
+            .department-card { padding: 18px; }
+            .dept-header { padding: 12px 14px; }
+            .dept-name { font-size: 1.05rem; }
+            .member-item { padding: 10px 12px; }
+        }
+
+    </style>
 </head>
 <body>
     <!-- 병원 홈페이지 스타일 헤더 -->
