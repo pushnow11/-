@@ -348,20 +348,9 @@
                 gap: 4px;
             }
         }
-    /* === Mobile/desktop slider behavior aligned to yujimin_cardio.html === */
-body { overflow-x: hidden !important; }
-.slider-container {
-  display: flex !important;
-  width: 200vw !important;
-  min-height: 100vh !important;
-  transition: transform 0.5s ease !important;
-}
-.slider-container.slide-left { transform: translateX(-100vw) !important; }
-.slide {
-  width: 100vw !important;
-  min-height: 100vh !important;
-  overflow-y: auto !important;
-}
+    /* Mobile swipe: prevent horizontal page scroll that can leave the slider half-way */
+html, body { overflow-x: hidden; }
+.slider-container { touch-action: pan-y; }
 </style>
 </head>
 <body>
@@ -491,7 +480,7 @@ body { overflow-x: hidden !important; }
     </div>
 
     <script>
-let currentSlide = 0;
+        let currentSlide = 0;
         const sliderContainer = document.getElementById('sliderContainer');
         const dot1 = document.getElementById('dot1');
         const dot2 = document.getElementById('dot2');
@@ -530,21 +519,44 @@ let currentSlide = 0;
 
         // 터치 스와이프 지원
         let touchStartX = 0;
-        let touchEndX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
 
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
 
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+document.addEventListener('touchmove', (e) => {
+    // Prevent horizontal page scroll (which can stop the slider in the middle on iOS)
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy)) {
+        e.preventDefault();
+    }
+}, { passive: false });
 
-        function handleSwipe() {
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+
+    // Only treat it as a swipe when horizontal movement is clearly dominant
+    const dx = touchEndX - touchStartX;
+    const dy = touchEndY - touchStartY;
+
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0) nextSlide();
+        else prevSlide();
+    } else {
+        // Snap back to the current slide (prevents half-way state)
+        updateSlide();
+    }
+}, { passive: true });
+function handleSwipe() {
             if (touchEndX < touchStartX - 50) nextSlide();
             if (touchEndX > touchStartX + 50) prevSlide();
         }
-</script>
+    </script>
 </body>
 </html>
