@@ -229,7 +229,10 @@
                 gap: 4px;
             }
         }
-    </style>
+    /* Mobile swipe: prevent horizontal page scroll that can leave the slider half-way */
+html, body { overflow-x: hidden; }
+.slider-container { touch-action: pan-y; }
+</style>
 </head>
 <body>
     <div class="container">
