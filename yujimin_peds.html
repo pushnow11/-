@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>유지민 - 소아청소년과 2년차 레지던트</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
@@ -342,11 +342,19 @@
                 gap: 4px;
             }
         }
-    /* Mobile: show only one slide at a time (prevent zoom-out showing both) */
-.slider-viewport{
-  width:100vw;
-  max-width:100%;
-  overflow:hidden;
+    /* === Mobile/desktop slider behavior aligned to yujimin_cardio.html === */
+body { overflow-x: hidden !important; }
+.slider-container {
+  display: flex !important;
+  width: 200vw !important;
+  min-height: 100vh !important;
+  transition: transform 0.5s ease !important;
+}
+.slider-container.slide-left { transform: translateX(-100vw) !important; }
+.slide {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
 }
 </style>
 </head>
@@ -474,7 +482,7 @@
     </div>
 
     <script>
-        let currentSlide = 0;
+let currentSlide = 0;
         const sliderContainer = document.getElementById('sliderContainer');
         const dot1 = document.getElementById('dot1');
         const dot2 = document.getElementById('dot2');
@@ -528,6 +536,6 @@
             if (touchEndX < touchStartX - 50) nextSlide();
             if (touchEndX > touchStartX + 50) prevSlide();
         }
-    </script>
+</script>
 </body>
 </html>
