@@ -533,6 +533,7 @@
             if (currentSlide < 1) {
                 currentSlide = 1;
                 updateSlide();
+                window.scrollTo(0, 0);
             }
         }
 
@@ -540,6 +541,7 @@
             if (currentSlide > 0) {
                 currentSlide = 0;
                 updateSlide();
+                window.scrollTo(0, 0);
             }
         }
 
@@ -548,8 +550,14 @@
                 sliderContainer.classList.remove('slide-left');
                 dot1.classList.add('active');
                 dot2.classList.remove('active');
-            window.scrollTo(0, 0);
             } else {
+                sliderContainer.classList.add('slide-left');
+                dot1.classList.remove('active');
+                dot2.classList.add('active');
+            }
+            // 페이지 전환 후 스크롤을 맨 위로
+            setTimeout(() => window.scrollTo(0, 0), 50);
+        } else {
                 sliderContainer.classList.add('slide-left');
                 dot1.classList.remove('active');
                 dot2.classList.add('active');
