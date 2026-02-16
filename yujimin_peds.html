@@ -515,69 +515,81 @@
     </div>
 
     <script>
+        // 2-page horizontal slider (0: 기본정보, 1: 명대사)
         let currentSlide = 0;
-        const sliderContainer = document.getElementById('sliderContainer');
+
+        const sliderContainer =
+            document.getElementById('sliderContainer') ||
+            document.querySelector('.slider-container');
+
+        const slides = Array.from(document.querySelectorAll('.slide'));
         const dot1 = document.getElementById('dot1');
         const dot2 = document.getElementById('dot2');
 
-        function nextSlide() {
-            if (currentSlide < 1) {
-                currentSlide = 1;
-                updateSlide();
-                window.scrollTo(0, 0);
-            }
+        function clampSlide(n) {
+            return Math.max(0, Math.min(1, n));
         }
 
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide = 0;
-                updateSlide();
-                window.scrollTo(0, 0);
-            }
+        function scrollToTopOnChange() {
+            // Reset both document scroll (some browsers) and slide internal scroll
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            slides.forEach(s => { try { s.scrollTop = 0; } catch (_) {} });
         }
 
-        function updateSlide() {
-            if (currentSlide === 0) {
-                sliderContainer.classList.remove('slide-left');
-                dot1.classList.add('active');
-                dot2.classList.remove('active');
-            } else {
-                sliderContainer.classList.add('slide-left');
-                dot1.classList.remove('active');
-                dot2.classList.add('active');
-            }
-            // 페이지 전환 후 스크롤을 맨 위로
-            setTimeout(() => window.scrollTo(0, 0), 50);
-        } else {
-                sliderContainer.classList.add('slide-left');
-                dot1.classList.remove('active');
-                dot2.classList.add('active');
-            }
+        function updateDots() {
+            if (dot1) dot1.classList.toggle('active', currentSlide === 0);
+            if (dot2) dot2.classList.toggle('active', currentSlide === 1);
         }
 
-        // 키보드 네비게이션
-        document.addEventListener('keydown', function(e) {
+        function updateSlide({ scrollTop = true } = {}) {
+            if (sliderContainer) {
+                sliderContainer.classList.toggle('slide-left', currentSlide === 1);
+            }
+            updateDots();
+            if (scrollTop) scrollToTopOnChange();
+        }
+
+        function goToSlide(index, { scrollTop = true } = {}) {
+            const next = clampSlide(index);
+            if (next === currentSlide) return;
+            currentSlide = next;
+            updateSlide({ scrollTop });
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        // Dot click support (if dots exist)
+        if (dot1) dot1.addEventListener('click', () => goToSlide(0));
+        if (dot2) dot2.addEventListener('click', () => goToSlide(1));
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') prevSlide();
             if (e.key === 'ArrowRight') nextSlide();
         });
 
-        // 터치 스와이프 지원
+        // Touch swipe support
         let touchStartX = 0;
         let touchEndX = 0;
 
-        document.addEventListener('touchstart', e => {
+        document.addEventListener('touchstart', (e) => {
+            if (!e.changedTouches || !e.changedTouches[0]) return;
             touchStartX = e.changedTouches[0].screenX;
-        });
+        }, { passive: true });
 
-        document.addEventListener('touchend', e => {
+        document.addEventListener('touchend', (e) => {
+            if (!e.changedTouches || !e.changedTouches[0]) return;
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) < 50) return;
+            if (diffX > 0) nextSlide();
+            else prevSlide();
         });
 
-        function handleSwipe() {
-  // Swipe disabled: slide changes only via buttons
-  return;
-}
+        // Initial render
+        updateSlide({ scrollTop: false });
     </script>
 </body>
 </html>
