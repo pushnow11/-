@@ -526,11 +526,6 @@
         }
         @media (max-width: 768px) {
             .external-people .member-name { white-space: normal; }
-        /* Match badge spacing with other sections */
-        .external-people .work-badge {
-            margin-left: 8px !important;
-        }
-
         }
 
 
@@ -562,6 +557,43 @@
             .member-name {
                 white-space: normal;
                 overflow-wrap: anywhere;
+            }
+
+            /* Mobile: prevent long badges/inline styles from forcing horizontal overflow */
+            .member-position {
+                min-width: 78px;
+            }
+            .member-name {
+                display: inline-flex;
+                align-items: baseline;
+                gap: 6px;
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+            .member-name[style] {
+                /* Some items had inline white-space:nowrap; override on mobile */
+                white-space: normal !important;
+                display: inline-flex !important;
+                flex-wrap: wrap !important;
+            }
+            .work-badge {
+                flex-shrink: 0;
+                margin-left: 0;
+            }
+        }
+
+        /* Extra-small screens: tighten badge sizing so columns don't break */
+        @media (max-width: 480px) {
+            .member-position {
+                min-width: 70px;
+                font-size: 0.8rem;
+            }
+            .member-name {
+                font-size: 0.92rem;
+            }
+            .work-badge {
+                font-size: 0.68rem;
+                padding: 2px 7px;
             }
         }
 
