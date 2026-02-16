@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>김낫미</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
@@ -27,11 +27,20 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Noto Sans KR', -apple-system, sans-serif;
             background: #e5e7eb;
             color: var(--text-primary);
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            touch-action: pan-y pinch-zoom;
         }
 
         .slider-container {
@@ -39,6 +48,8 @@
             width: 200vw;
             min-height: 100vh;
             transition: transform 0.5s ease;
+            position: relative;
+            left: 0;
         }
 
         .slider-container.slide-left {
@@ -364,7 +375,7 @@
                                     </div>
                                     <div class="info-item">
                                         <div class="info-label">직업</div>
-                                        <div class="info-value">존잘 금손 작가</div>
+                                        <div class="info-value">금손 작가</div>
                                     </div>
                                     <div class="info-item">
                                         <div class="info-label">취미</div>
