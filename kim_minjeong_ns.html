@@ -26,20 +26,15 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html {
+
+                        html {
             overflow-x: hidden;
             width: 100%;
             position: relative;
         }
 
-
-
-                body {
-
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-            touch-action: pan-y pinch-zoom;            font-family: 'Noto Sans KR', -apple-system, sans-serif;
+        body {
+            font-family: 'Noto Sans KR', -apple-system, sans-serif;
             background: #e5e7eb;
             color: var(--text-primary);
             overflow-x: hidden;
@@ -50,8 +45,6 @@
             width: 200vw;
             min-height: 100vh;
             transition: transform 0.5s ease;
-                    position: relative;
-            left: 0;
         }
 
         .slider-container.slide-left {
@@ -255,7 +248,7 @@
         }
 
         .quote-text {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: var(--text-primary);
             font-style: italic;
@@ -354,18 +347,18 @@
 
             .profile-header h1 {
                 font-size: 2rem;
-            
-            .quote-text {
-                font-size: 0.95rem;
-                line-height: 1.6;
             }
-
-        }
 
             .info-item {
                 grid-template-columns: 1fr;
                 gap: 4px;
             }
+        
+            .quote-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
         }
     
 .appointment-button {
@@ -551,9 +544,8 @@
                 sliderContainer.classList.remove('slide-left');
                 dot1.classList.add('active');
                 dot2.classList.remove('active');
-                        // 페이지 전환 후 스크롤을 맨 위로
             window.scrollTo(0, 0);
-        } else {
+            } else {
                 sliderContainer.classList.add('slide-left');
                 dot1.classList.remove('active');
                 dot2.classList.add('active');
