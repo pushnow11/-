@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김낫미</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hospital-blue: #0f0f43;
+            --hospital-blue-light: #1e3a8a;
+            --primary: #2563eb;
+            --primary-light: #60a5fa;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --bg: #fafbfc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, sans-serif;
+            background: #e5e7eb;
+            color: var(--text-primary);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px var(--shadow);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #0f0f43 0%, #1e3a8a 40%, #2563eb 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .profile-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .profile-image {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .detail-section {
+            background: var(--bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .detail-section h2 {
+            font-size: 1.3rem;
+            color: var(--hospital-blue);
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-section h2::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--hospital-blue);
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            color: var(--text-primary);
+        }
+
+        .career-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .career-list li {
+            padding: 12px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .career-list li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--hospital-blue);
+            font-weight: bold;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .nav-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .info-item {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+    
+        .work-badge.whynotme {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #86efac 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.5);
+        }
+
+.work-badge {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #9ca3af 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(55, 65, 81, 0.5);
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .work-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(55, 65, 81, 0.6);
+        }
+
+        .work-badge.whynotme {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #86efac 100%);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.5);
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                
+                <a href="#" class="work-badge whynotme">와이낫미</a>
+<h1>김낫미</h1>
+                <p class="subtitle">명우대학교병원 이사장</p>
+</div>
+
+            <div class="profile-content">
+                <div>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTExODI3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMzc0MTUxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzljYTNhZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIyNjAiIHI9IjExMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjE4KSIvPgogIDxyZWN0IHg9IjE0MCIgeT0iMzgwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTgpIi8+Cjwvc3ZnPg==" class="profile-image" alt="김낫미">
+                </div>
+
+                <div class="profile-details">
+
+                <div class="detail-section">
+                    <h2>기본 정보</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">이름</div>
+                            <div class="info-value">김낫미</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">나이</div>
+                            <div class="info-value">지천명</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">직업</div>
+                            <div class="info-value">존잘 금손 작가</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">취미</div>
+                            <div class="info-value">글쓰기</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="detail-section">
+                    <h2>특징</h2>
+                    <ul class="career-list">
+                        <li>가죽가살</li>
+                        <li>지독한 찌통러버</li>
+                        <li>기승전결/캐릭터의 입체감/개연성이 없는 글은 글로 취급하지 않는다.</li>
+                        <li>장르를 가리지 않고 다양한 음악을 즐긴다.</li>
+                    </ul>
+                </div>
+
+
+                <div class="detail-section">
+                    <h2>특이사항</h2>
+                    <ul class="career-list">
+                        <li>칼윈 포스타입 작가들 중 구독자 수 1등🏆️</li>
+                        <li>얼마 남지 않은 aespa 데뷔초 연성러</li>
+                        <li>뼛속까지 핑크블러드</li>
+                        <li>현생이 매우 바쁘다.</li>
+                        <li>스트레스를 받으면 글쓰기로 해소한다.</li>
+                    </ul>
+                </div>
+            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="nav-button" onclick="window.close()">창 닫기</button>
+        </div>
+    </div>
+</body>
+</html>

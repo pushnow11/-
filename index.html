@@ -642,6 +642,29 @@
             color: inherit !important;
         }
 
+
+        /* 경영진(이사장) 카드 클릭/호버 인터랙션 */
+        .director-section .director-card.clickable {
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+            user-select: none;
+        }
+        .director-section .director-card.clickable:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18) !important;
+            filter: brightness(1.12) !important;
+        }
+        .director-section .director-card.clickable:active {
+            transform: translateY(0px) scale(0.99) !important;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14) !important;
+            filter: brightness(0.98) !important;
+        }
+        .director-section .director-card.clickable:focus-visible {
+            outline: 3px solid rgba(96, 165, 250, 0.85);
+            outline-offset: 4px;
+        }
+
 </style>
 </head>
 <body>
@@ -666,7 +689,7 @@
             <h2 class="section-title">경영진</h2>
             
             <div class="current-director">
-                <div class="director-card">
+                <div class="director-card clickable" onclick="window.open('kim_notme.html', '_blank', 'width=1200,height=1200')" tabindex="0" clickable">
                     <div class="role">이사장</div>
                     <div class="name">김낫미</div>
                 </div>
