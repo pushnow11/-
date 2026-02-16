@@ -255,7 +255,7 @@
         }
 
         .quote-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
             color: var(--text-primary);
             font-style: italic;
@@ -354,7 +354,13 @@
 
             .profile-header h1 {
                 font-size: 2rem;
+            
+            .quote-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
             }
+
+        }
 
             .info-item {
                 grid-template-columns: 1fr;
@@ -545,7 +551,9 @@
                 sliderContainer.classList.remove('slide-left');
                 dot1.classList.add('active');
                 dot2.classList.remove('active');
-            } else {
+                        // 페이지 전환 후 스크롤을 맨 위로
+            window.scrollTo(0, 0);
+        } else {
                 sliderContainer.classList.add('slide-left');
                 dot1.classList.remove('active');
                 dot2.classList.add('active');
