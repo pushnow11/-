@@ -379,9 +379,6 @@
         .work-badge.code-gray {
             background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #9ca3af 100%);
         }
-/* Mobile swipe: prevent horizontal page scroll that can leave the slider half-way */
-html, body { overflow-x: hidden; }
-.slider-container { touch-action: pan-y; }
 </style>
 </head>
 <body>
@@ -418,7 +415,7 @@ html, body { overflow-x: hidden; }
                                     </div>
                                     <div class="info-item">
                                         <span class="info-label">직업</span>
-                                        <span class="info-value">아트 디렉터</span>
+                                        <span class="info-value">미상</span>
                                     </div>
                                     <div class="info-item">
                                         <span class="info-label">정보</span>
@@ -493,6 +490,15 @@ html, body { overflow-x: hidden; }
                         
                         <div class="quote-section">
                             <div class="quote-item">
+                                <p class="quote-text">나한테 마음 주지마. 좋아하지 말라고.</p>
+                            </div>
+                            <div class="quote-item">
+                                <p class="quote-text">되새겨 주기 싫어서요. 제가 환자라는 거, 언제라도 죽을 수 있다는 거.</p>
+                            </div>
+                            <div class="quote-item">
+                                <p class="quote-text">너는…그런 나한테 자꾸 만약이라는 선택지를 줘.</p>
+                            </div>
+                            <div class="quote-item">
                                 <p class="quote-text">아…내가 그걸 잊었다. 너도 회장님 개새끼였지.</p>
                             </div>
                             </div>
@@ -552,41 +558,18 @@ html, body { overflow-x: hidden; }
 
         // 터치 스와이프 지원
         let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
+        let touchEndX = 0;
 
-document.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
 
-document.addEventListener('touchmove', (e) => {
-    // Prevent horizontal page scroll (which can stop the slider in the middle on iOS)
-    const dx = e.changedTouches[0].screenX - touchStartX;
-    const dy = e.changedTouches[0].screenY - touchStartY;
-    if (Math.abs(dx) > Math.abs(dy)) {
-        e.preventDefault();
-    }
-}, { passive: false });
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
 
-document.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    touchEndY = e.changedTouches[0].screenY;
-
-    // Only treat it as a swipe when horizontal movement is clearly dominant
-    const dx = touchEndX - touchStartX;
-    const dy = touchEndY - touchStartY;
-
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-        if (dx < 0) nextSlide();
-        else prevSlide();
-    } else {
-        // Snap back to the current slide (prevents half-way state)
-        updateSlide();
-    }
-}, { passive: true });
-function handleSwipe() {
+        function handleSwipe() {
             if (touchEndX < touchStartX - 50) nextSlide();
             if (touchEndX > touchStartX + 50) prevSlide();
         }
