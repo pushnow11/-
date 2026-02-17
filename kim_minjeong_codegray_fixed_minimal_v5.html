@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>김민정 - 코드 그레이</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
@@ -380,6 +380,26 @@
             background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #9ca3af 100%);
         }
 </style>
+
+<style>
+/* --- zoom/visibility hardening (best-effort) --- */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* clip offscreen content */
+}
+
+/* If this file uses the same slider pattern, keep container clipped */
+.slider-container, #sliderContainer {
+  height: 100vh;
+}
+
+/* Allow only vertical pan gestures where supported */
+body, .slider-container, #sliderContainer {
+  touch-action: pan-y;
+}
+</style>
+
 </head>
 <body>
     <div class="slider-container" id="sliderContainer">
@@ -574,5 +594,29 @@
             if (touchEndX > touchStartX + 50) prevSlide();
         }
     </script>
+
+<script>
+/* --- block common zoom interactions (best-effort; some browsers may ignore) --- */
+(function () {
+  // Ctrl/Cmd + wheel zoom (desktop)
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey || e.metaKey) e.preventDefault();
+  }, { passive: false });
+
+  // Ctrl/Cmd + + / - / 0 (desktop)
+  window.addEventListener('keydown', function (e) {
+    const k = e.key;
+    if ((e.ctrlKey || e.metaKey) && (k === '+' || k === '-' || k === '=' || k === '0')) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // iOS Safari pinch gesture events
+  window.addEventListener('gesturestart', function (e) { e.preventDefault(); }, { passive: false });
+  window.addEventListener('gesturechange', function (e) { e.preventDefault(); }, { passive: false });
+  window.addEventListener('gestureend', function (e) { e.preventDefault(); }, { passive: false });
+})();
+</script>
+
 </body>
 </html>
