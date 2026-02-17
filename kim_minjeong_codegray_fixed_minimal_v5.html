@@ -381,23 +381,46 @@
         }
 </style>
 
+
 <style>
 /* --- zoom/visibility hardening (best-effort) --- */
+/* Important: allow vertical scrolling INSIDE each slide */
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden; /* clip offscreen content */
+  margin: 0;
 }
 
-/* If this file uses the same slider pattern, keep container clipped */
+/* Prevent horizontal overflow (so zoom-out doesn't reveal slide 2), but DON'T block vertical scroll globally */
+body {
+  overflow-x: hidden;
+  overflow-y: hidden; /* outer scroll off; slides scroll instead */
+}
+
+/* Lock the slider frame to viewport height */
 .slider-container, #sliderContainer {
   height: 100vh;
 }
 
+/* Each slide becomes the scroll container */
+.slide {
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Allow only vertical pan gestures where supported */
-body, .slider-container, #sliderContainer {
+body, .slider-container, #sliderContainer, .slide {
   touch-action: pan-y;
 }
+</style>
+
+
+
+<style>
+/* --- scroll patch: ensure slides can reach bottom --- */
+.slider-container { height: 100vh; }
+.slide { height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 </style>
 
 </head>
